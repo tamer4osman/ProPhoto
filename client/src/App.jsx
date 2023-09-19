@@ -19,9 +19,10 @@ App=() =>{
       </nav>
 
       <Routes>
-        <Route exact path="/" element={<Home />} />
+
+        {/* <Route exact path="/" element={<Home />} />
         <Route path="/Posts/" element={<PokemonDetail />} />
-        <Route path="/Posts/:id" element={<DetailedInfo />} />
+        <Route path="/Posts/:id" element={<DetailedInfo />} /> */}
       </Routes>
       
     </>
