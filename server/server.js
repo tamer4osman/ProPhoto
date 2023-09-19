@@ -8,6 +8,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 const { fileURLToPath, URL } = require("url");
+const { register } = require("module");
+const { register } = require("./controllers/authController");
 
 const app = express();
 
@@ -28,7 +30,7 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 require("dotenv").config();
 
-const store = multer.diskStorage({ 
+const storage = multer.diskStorage({ 
   destination: (req, file, cb) => {
     cb(null, "public/assets");
   },
@@ -37,7 +39,11 @@ const store = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: store }).single("file");
+const upload = multer({ storage: storage });
+
+// routes
+app.post("/auth/register", upload.single("picture"), register);
+
 
 const port = process.env.PORT || 3000;
 // database connection
