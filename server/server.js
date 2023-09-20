@@ -5,17 +5,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const multer = require("multer");
 const helmet = require("helmet");
-const morgan = require("morgan");
 const path = require("path");
-const { fileURLToPath, URL } = require("url");
-const { register } = require("module");
-const { register } = require("./controllers/authController");
+const { signUp } = require("./controllers/authController");
 
 const app = express();
 
-// Remove the explicit declaration of __filename and __dirname
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -42,7 +37,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // routes
-app.post("/auth/register", upload.single("picture"), register);
+app.post("/auth/signUp", upload.single("picture"), signUp);
 
 
 const port = process.env.PORT || 3000;
