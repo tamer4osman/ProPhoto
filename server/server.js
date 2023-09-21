@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const path = require("path");
 const { signUp } = require("./controllers/authController");
 const authRoutes = require("./routers/authRoutes");
+const userRoutes = require("./routers/userRoutes");
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.post("/auth/signUp", upload.single("picture"), signUp);
 // routes without files to upload
 
 app.use("/auth", authRoutes);
+app.use("/users",userRoutes);
 
 const port = process.env.PORT || 3000;
 // database connection
