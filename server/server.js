@@ -7,6 +7,7 @@ const multer = require("multer");
 const helmet = require("helmet");
 const path = require("path");
 const { signUp } = require("./controllers/authController");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -36,9 +37,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// routes
+// routes with files to upload
 app.post("/auth/signUp", upload.single("picture"), signUp);
 
+// routes without files to upload
+
+app.use("/auth", authRoutes);
 
 const port = process.env.PORT || 3000;
 // database connection
