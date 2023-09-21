@@ -64,5 +64,5 @@ login = async (req, res) => {
 
 /*export signUp function*/
 module.exports = {
-    signUp
+    signUp, login
 };

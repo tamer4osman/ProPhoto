@@ -7,7 +7,7 @@ const multer = require("multer");
 const helmet = require("helmet");
 const path = require("path");
 const { signUp } = require("./controllers/authController");
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routers/authRoutes");
 
 const app = express();
 
