@@ -9,6 +9,9 @@ const path = require("path");
 const { signUp } = require("./controllers/authController");
 const authRoutes = require("./routers/authRoutes");
 const userRoutes = require("./routers/userRoutes");
+const postRoutes = require("./routers/postRoutes");
+const { createPost } = require("./controllers/postController");
+const { verifyToken } = require("./middleware/authMiddleware");
 
 const app = express();
 
@@ -40,11 +43,13 @@ const upload = multer({ storage: storage });
 
 // routes with files to upload
 app.post("/auth/signUp", upload.single("picture"), signUp);
+app.post("/pposts", verifyToken,upload.single("picture"), createPost);
 
 // routes without files to upload
 
 app.use("/auth", authRoutes);
 app.use("/users",userRoutes);
+app.use("/pposts",postRoutes);
 
 const port = process.env.PORT || 3000;
 // database connection
