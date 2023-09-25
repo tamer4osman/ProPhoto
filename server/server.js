@@ -43,13 +43,13 @@ const upload = multer({ storage: storage });
 
 // routes with files to upload
 app.post("/auth/signUp", upload.single("picture"), signUp);
-app.post("/pposts", verifyToken,upload.single("picture"), createPost);
+app.post("/posts", verifyToken,upload.single("picture"), createPost);
 
 // routes without files to upload
 
 app.use("/auth", authRoutes);
 app.use("/users",userRoutes);
-app.use("/pposts",postRoutes);
+app.use("/posts",postRoutes);
 
 const port = process.env.PORT || 3000;
 // database connection
