@@ -12,6 +12,9 @@ const userRoutes = require("./routers/userRoutes");
 const postRoutes = require("./routers/postRoutes");
 const { createPost } = require("./controllers/postController");
 const { verifyToken } = require("./middleware/authMiddleware");
+const User = require("./models/User");
+const Post = require("./models/Post");
+const {users, posts} = require("./data/data.js");
 
 const app = express();
 
@@ -64,6 +67,9 @@ mongoose
   .then(() =>
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
+      // User.insertMany(users);
+      // Post.insertMany(posts);
+
     })
   )
   .catch((err) => console.log(err));
