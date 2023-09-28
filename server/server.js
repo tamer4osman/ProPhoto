@@ -54,7 +54,7 @@ app.use("/auth", authRoutes);
 app.use("/users",userRoutes);
 app.use("/posts",postRoutes);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 6001;
 // database connection
 
 const dbURI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}${process.env.MONGODB_URL}/${process.env.MONGODB_DATABASE}`;
