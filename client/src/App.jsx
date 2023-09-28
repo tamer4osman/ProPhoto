@@ -1,31 +1,37 @@
-import React from "react";
-import { Route, Routes, NavLink } from "react-router-dom";
-App=() =>{
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/homePage/homePage";
+import LoginPage from "./pages/loginPage/loginPage";
+import ProfilePage from "./pages/profilePage/profilePage";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { themeSettings } from "./theme";
+
+function App() {
+  const mode = useSelector((state) => state.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isAuth = Boolean(useSelector((state) => state.token));
 
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Posts/">Posts</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Posts/id">First Pokemon base</NavLink>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-
-        {/* <Route exact path="/" element={<Home />} />
-        <Route path="/Posts/" element={<PokemonDetail />} />
-        <Route path="/Posts/:id" element={<DetailedInfo />} /> */}
-      </Routes>
-      
-    </>
+    <div className="app">
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route
+              path="/home"
+              element={isAuth ? <HomePage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/profile/:userId"
+              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 
