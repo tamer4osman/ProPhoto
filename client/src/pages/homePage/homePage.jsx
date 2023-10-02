@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Navbar from "../navbar/navbar";
 import UserWidget from "../widgets/UserWidget";
 import MyPostWidget from "../widgets/MyPostWidget";
+import PostsWidget from "../widgets/PostsWidget";
 import FriendListWidget from "../widgets/FriendListWidget";
 
 const HomePage = () => {
