@@ -65,7 +65,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "http://localhost:6001/auth/signUp",
+      "http://localhost:6001/auth/signup",
       {
         method: "POST",
         body: formData,
