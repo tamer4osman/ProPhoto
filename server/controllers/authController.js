@@ -33,8 +33,8 @@ signUp = async (req, res) => {
             validated: false
         });
 
-        const sevedUser = await newUser.save();
-        res.status(201).json({ sevedUser });
+        const savedUser = await newUser.save();
+        res.status(201).json({ savedUser });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -62,7 +62,7 @@ login = async (req, res) => {
     }
 }
 
-/*export signUp function*/
+
 module.exports = {
     signUp, login
 };
