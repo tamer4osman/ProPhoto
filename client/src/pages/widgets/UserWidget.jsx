@@ -49,7 +49,9 @@ const UserWidget = ({ userId, picturePath }) => {
   } = user;
 
   return (
-    <WidgetWrapper>
+    <>
+    {!user && !friends ? <p>Loading</p> :
+      <WidgetWrapper>
       {/* FIRST ROW */}
       <FlexBetween
         gap="0.5rem"
@@ -72,7 +74,8 @@ const UserWidget = ({ userId, picturePath }) => {
             >
               {firstName} {lastName}
             </Typography>
-            <Typography color={medium}>{friends.length} friends</Typography>
+            { friends &&
+              <Typography color={medium}>{friends.length} friends</Typography>}
           </Box>
         </FlexBetween>
         <ManageAccountsOutlined />
@@ -144,7 +147,8 @@ const UserWidget = ({ userId, picturePath }) => {
           <EditOutlined sx={{ color: main }} />
         </FlexBetween>
       </Box>
-    </WidgetWrapper>
+    </WidgetWrapper>}
+    </>
   );
 };
 
