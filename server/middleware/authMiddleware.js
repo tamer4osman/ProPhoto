@@ -1,15 +1,15 @@
-const jwt=require('jsonwebtoken');
+let jwt = require('jsonwebtoken');
 
-const verifyToken=(req,res,next)=>{
+let verifyToken=(req,res,next)=>{
     try{
-        const token=req.header('Authorization');
+        let token=req.header('Authorization');
         if(!token) return res.status(401).json({error:"Unauthorized"});
 
-        if (token.startswith('Bearer ')) {
+        if (token.startsWith('Bearer ')) {
             token = token.slice(7, token.length).trimLeft();
         }
         
-        const verified=jwt.verify(token,process.env.JWT_SECRET);
+        let verified=jwt.verify(token,process.env.JWT_SECRET);
         req.user=verified;
         next();
     }
