@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { Box, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Box, useMediaQuery } from "@mui/material";
 import Navbar from "../navbar/navbar";
 import FriendListWidget from "../widgets/FriendListWidget";
 import MyPostWidget from "../widgets/MyPostWidget";
@@ -25,9 +25,11 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return user ? (
+  if (!user) return null;
+
+  return (
     <Box>
       <Navbar />
       <Box
@@ -52,7 +54,7 @@ const ProfilePage = () => {
         </Box>
       </Box>
     </Box>
-  ) : null;
+  );
 };
 
 export default ProfilePage;
