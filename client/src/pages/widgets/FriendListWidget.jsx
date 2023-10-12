@@ -25,30 +25,26 @@ const FriendListWidget = ({ userId }) => {
 
   useEffect(() => {
     getFriends();
-    return ()=>{}
+    return () => {};
   }, [friends]);
 
   return (
     <WidgetWrapper>
-      <Typography
-        color={palette.neutral.dark}
-        variant="h5"
-        fontWeight="500"
-        sx={{ mb: "1.5rem" }}
-      >
+      <Typography color={palette.neutral.dark} variant="h5" fontWeight="500" sx={{ mb: "1.5rem" }}>
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-        {!friends ? <p>Loading</p> :
-        friends.map((friend) => (
-          <Friend
-            key={friend._id}
-            friendId={friend._id}
-            name={`${friend.firstName} ${friend.lastName}`}
-            subtitle={friend.occupation}
-            userPicturePath={friend.picturePath}
-          />
-        ))}
+        {!friends ? <p>Loading</p> : (
+          friends.map((friend) => (
+            <Friend
+              key={friend._id}
+              friendId={friend._id}
+              name={`${friend.firstName} ${friend.lastName}`}
+              subtitle={friend.occupation}
+              userPicturePath={friend.picturePath}
+            />
+          ))
+        )}
       </Box>
     </WidgetWrapper>
   );
