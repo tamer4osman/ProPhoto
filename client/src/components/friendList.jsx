@@ -52,6 +52,7 @@ const { _id, token, friends } = useSelector(selectUserData);
           }}
         >
           <Typography
+            key={friendId}
             color={main}
             variant="h5"
             fontWeight="500"
