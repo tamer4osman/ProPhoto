@@ -2,6 +2,7 @@ import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { createSelector } from 'reselect';
 import { setFriends } from "../state";
 import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
@@ -9,10 +10,19 @@ import UserImage from "./UserImage";
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { _id } = useSelector((state) => state.user);
-  const token = useSelector((state) => state.token);
-  const friends = useSelector((state) => state.user.friends);
+const selectUser = (state) => state.user;
 
+// Create a memoized selector using createSelector
+const selectUserData = createSelector(
+  selectUser,
+  (user) => ({
+    _id: user._id,
+    token: user.token,
+    friends: user.friends,
+  })
+);
+
+const { _id, token, friends } = useSelector(selectUserData);
   const { palette } = useTheme();
   const primaryLight = palette.primary.light;
   const primaryDark = palette.primary.dark;
@@ -20,18 +30,14 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const medium = palette.neutral.medium;
 
   const patchFriend = async () => {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/users/${_id}/${friendId}`,
-      {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${_id}/${friendId}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
-    console.log(data)
     dispatch(setFriends({ friends: data.find((friend) => friend._id === friendId) }));
   };
 
