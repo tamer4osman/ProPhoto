@@ -1,7 +1,7 @@
-import { Box, useMediaQuery } from "@mui/material";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Box, useMediaQuery } from "@mui/material";
 import Navbar from "../navbar/navbar";
 import FriendListWidget from "../widgets/FriendListWidget";
 import MyPostWidget from "../widgets/MyPostWidget";
@@ -27,9 +27,7 @@ const ProfilePage = () => {
     getUser();
   }, []);
 
-  if (!user) return null;
-
-  return (
+  return user ? (
     <Box>
       <Navbar />
       <Box
@@ -54,7 +52,7 @@ const ProfilePage = () => {
         </Box>
       </Box>
     </Box>
-  );
+  ) : null;
 };
 
 export default ProfilePage;
