@@ -1,21 +1,19 @@
-let jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-let verifyToken=(req,res,next)=>{
-    try{
-        let token=req.header('Authorization');
-        if(!token) return res.status(401).json({error:"Unauthorized"});
+const verifyToken = (req, res, next) => {
+  try {
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).json({ error: "Unauthorized" });
 
-        if (token.startsWith('Bearer ')) {
-            token = token.slice(7, token.length).trimLeft();
-        }
-        
-        let verified=jwt.verify(token,process.env.JWT_SECRET);
-        req.user=verified;
-        next();
-    }
-    catch(error){
-        res.status(401).json({error:error.message});
-    } 
+    const tokenPrefix = 'Bearer ';
+    const cleanedToken = token.startsWith(tokenPrefix) ? token.slice(tokenPrefix.length).trimLeft() : token;
+    
+    const verified = jwt.verify(cleanedToken, process.env.JWT_SECRET);
+    req.user = verified;
+    next();
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
 }
 
-module.exports={verifyToken};
+module.exports = { verifyToken };
