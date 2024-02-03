@@ -14,7 +14,7 @@ const { createPost } = require("./controllers/postController");
 const { verifyToken } = require("./middleware/authMiddleware");
 const User = require("./models/User");
 const Post = require("./models/Post");
-const { users, posts } = require("./data/data.js");
+// const { users, posts } = require("./data/data.js");
 
 const app = express();
 
