@@ -10,6 +10,5 @@ Key Features:
 4. E-commerce Integration: The project supports e-commerce functionalities, enabling photographers to sell their photographs directly through their website. It integrates with popular payment gateways to facilitate secure transactions.
 5. SEO Optimization: ProPhoto is designed with search engine optimization (SEO) in mind. It provides tools and features to help photographers improve their website's visibility on search engines and attract more organic traffic.
 6. Mobile Responsiveness: The project ensures that the website looks and functions seamlessly on all devices, including desktops, tablets, and smartphones. It provides a mobile-responsive design to provide a consistent user experience across different platforms.
-7. Community Support: The ProPhoto repository on GitHub has an active community of users and contributors. They regularly share updates, bug fixes, and new features to enhance the project and assist other users.
 
 Overall, ProPhoto is a powerful and versatile photography web application that caters to the needs of professional photographers. It provides a comprehensive set of tools to help them manage their portfolios, engage with clients, and grow their business.
