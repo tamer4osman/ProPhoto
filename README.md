@@ -4,7 +4,7 @@ Description: ProPhoto is a photography-focused web application that provides a c
 
 Key Features:
 
-1. Portfolio Management: ProPhoto allows photographers to easily upload, organize, and showcase their photographs in a visually appealing manner. They can create albums, categorize images, and add descriptions to each photo.
+1. Portfolio Management: ProPhoto allows photographers to easily upload, organize, and showcase their photographs visually appealingly. They can create albums, categorize images, and add descriptions to each photo.
 2. Client Galleries: The project provides a secure and private space for photographers to share their work with clients. Clients can access their designated galleries using unique URLs and can download or order prints directly from the website.
 3. Customization: ProPhoto offers a high degree of customization to suit the unique branding and aesthetic preferences of each photographer. Users can choose from a variety of themes and layout options to create a personalized website.
 4. E-commerce Integration: The project supports e-commerce functionalities, enabling photographers to sell their photographs directly through their website. It integrates with popular payment gateways to facilitate secure transactions.
