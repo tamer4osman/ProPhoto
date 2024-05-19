@@ -1,6 +1,4 @@
-Project Name: ProPhoto
-Repository Link: https://github.com/tamer4osman/ProPhoto
-Description: ProPhoto is a photography-focused web application that provides a comprehensive platform for photographers to manage their portfolios, showcase their work, and interact with clients. It offers a range of features to help photographers streamline their workflow and enhance their online presence.
+ProPhoto is a photography-focused web application that provides a comprehensive platform for photographers to manage their portfolios, showcase their work, and interact with clients. It offers a range of features to help photographers streamline their workflow and enhance their online presence.
 
 Key Features:
 
